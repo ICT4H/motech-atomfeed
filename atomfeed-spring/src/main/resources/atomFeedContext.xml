@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+       xmlns:context="http://www.springframework.org/schema/context">
+
+    <context:property-placeholder location="classpath*:*.properties"/>
+
+    <!-- <context:annotation-config/>
+    <context:spring-configured/>
+     -->
+    <import resource="classpath:atomFeedJdbcContext.xml"/>
+
+    <bean id="generatorFactory" class="org.ict4htw.atomfeed.server.service.feedgenerator.FeedGeneratorFactory">
+    </bean>
+    <bean id="feedGenerator" factory-bean="generatorFactory" factory-method="getFeedGenerator">
+        <constructor-arg ref="allEventRecords"/>
+        <constructor-arg ref="allChunkingEntries"/>
+    </bean>
+    
+    <bean id="eventFeedService" class="org.ict4htw.atomfeed.server.service.EventFeedService">
+        <constructor-arg ref="feedGenerator"/>
+    </bean>
+    
+    <bean id="eventService" class="org.ict4htw.atomfeed.server.service.EventService">
+        <constructor-arg ref="allEventRecords"/>
+    </bean>
+    
+</beans>
