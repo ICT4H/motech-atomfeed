@@ -1,32 +1,15 @@
-Atomfeed
+Motech-Atomfeed
 ========
 
-[![Build Status](https://travis-ci.org/ICT4H/atomfeed.png)](https://travis-ci.org/ICT4H/atomfeed)
+[![Build Status](https://travis-ci.org/ICT4H/motech-atomfeed.png)](https://travis-ci.org/ICT4H/motech-atomfeed)
 
-AtomFeed is an implementation of the [ATOM protocol](https://github.com/ICT4H/simplefeed) in Java. It consists of the following modules
+Motech AtomFeed is an [ATOM](https://github.com/ICT4H/simplefeed) consumer implementation that is written for the [Motech](https://code.google.com/p/motech/) platform.
 
-* atomfeed-server - An ATOM server implementaion that broadcasts events
-* atomfeed-client - An ATOM client implementation that consumes events.
-* atomfeed-spring-server - A spring wrapper on atomfeed-server
+It consists of the following modules
 
-Design
-------
-
-AtomFeed is designed to work in a clustered evnironment. Our only point of synchronisation is the database
-
-We allow for two different pagination strategies. Time and Number based pagination. 
-
-* Number based pagination works by creating chunks based on sequence ids.
-* Time based pagination works by creating chunks based on timestamps of created events.
-
-By allowing support to these two pagination mechanisms, AtomFeed works with databases that support auto incrementing Ids and those that don't.
-
-<p>
-AtomFeed has the ability to support multiple changes to the pagination chunk size after the module has been installed and feeds have been generated.
-As expected, this change will only affect the feeds created after the change in pagination chunk size has been effected.
-
-Please take a look at the documentation to see how this can be achieved.
-</p>
+* motech-atomfeed-consumer - A generic ATOM consumer built using [an atom client](https://github.com/ICT4H/atomfeed) that uses the motech scheduler to poll the configured server periodically.
+* motech-atomfeed-consumer-bundle - An OSGI wrapper around the consumer module.
+* motech-openmrs-integration - An use case implementation of how OpenMRS and Motech can communicate using ATOM.
 
 Build
 -----
@@ -46,10 +29,6 @@ To start up:
 
 To integration test:
 * mvn integration-test -P IT
-
-Documentation
-------
-Please see the [wiki](https://github.com/ICT4H/atomfeed/wiki) for documentation on using Atomfeed.
 
 ## License
 

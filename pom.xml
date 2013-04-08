@@ -2,19 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ict4h</groupId>
-    <artifactId>atomfeed</artifactId>
+    <artifactId>motech-atomfeed</artifactId>
     <version>0.9-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>atomfeed</name>
+    <name>motech-atomfeed</name>
     <description />
-    <url>https://github.com/ICT4H/atomfeed</url>
-
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
-    </parent>
-
+    <url>https://github.com/ICT4H/motech-atomfeed</url>
 
     <licenses>
         <license>
@@ -23,34 +16,15 @@
         </license>
     </licenses>
 
-    <scm>
-        <url>https://github.com/ICT4H/atomfeed</url>
-        <connection>scm:git:git@github.com:ICT4H/atomfeed.git</connection>
-        <developerConnection>scm:git:git@github.com:ICT4H/atomfeed.git</developerConnection>
-    </scm>
-
-    <developers>
-        <developer>
-            <id>1</id>
-            <name>ICT4H</name>
-            <email>ict4h@thoughtworks.com</email>
-            <organization>ThoughtWorks, Inc.</organization>
-        </developer>
-    </developers>
-
-    <modules>
-        <module>atomfeed-server</module>
-        <module>atomfeed-client</module>
-        <module>atomfeed-spring-server</module>
-        <!--<module>motech-atomfeed-consumer</module>-->
-        <!--<module>motech-atomfeed-consumer-bundle</module>-->
-        <!--<module>motech-openmrs-integration</module>-->
-  </modules>
-
     <properties>
-        <jetty.version>8.1.8.v20121106</jetty.version>
         <atomfeed.version>0.9-SNAPSHOT</atomfeed.version>
     </properties>
+
+    <modules>
+        <module>motech-atomfeed-consumer</module>
+        <module>motech-atomfeed-consumer-bundle</module>
+        <module>motech-openmrs-integration</module>
+  </modules>
 
     <build>
         <pluginManagement>
@@ -63,96 +37,9 @@
                         <source>1.6</source>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>2.4</version>
-                    <executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>copy</goal>
-                            </goals>
-                            <configuration>
-                                <artifactItems>
-                                    <artifactItem>
-                                        <groupId>com.github.jsimone</groupId>
-                                        <artifactId>webapp-runner</artifactId>
-                                        <version>7.0.22.3</version>
-                                        <destFileName>webapp-runner.jar</destFileName>
-                                    </artifactItem>
-                                </artifactItems>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>2.3</version>
-                    <configuration>
-                        <webResources>
-                            <resource>
-                                <directory>src/main/webapp</directory>
-                            </resource>
-                        </webResources>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>cobertura-maven-plugin</artifactId>
-                    <version>2.5.2</version>
-                </plugin>
             </plugins>
         </pluginManagement>
-
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.5.2</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <pushChanges>false</pushChanges>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>IT</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.9</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                                <configuration>
-                                    <argLine>-XX:MaxPermSize=1024M</argLine>
-                                    <includes>
-                                        <include>**/*IT.java</include>
-                                    </includes>
-                                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
 
     <repositories>
         <repository>
@@ -193,30 +80,4 @@
             <name>Repository for plugins</name>
         </pluginRepository>
     </pluginRepositories>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-server</artifactId>
-                <version>${jetty.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.5.2</version>
-                <configuration>
-                    <check />
-                    <formats>
-                        <format>html</format>
-                    </formats>
-                </configuration>
-            </plugin>
-        </plugins>
-    </reporting>
 </project>
