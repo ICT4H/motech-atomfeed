@@ -16,7 +16,7 @@
 
     <properties>
         <motech.version>0.19-SNAPSHOT</motech.version>
-        <motech.atomfeed.version>0.1-SNAPSHOT</motech.atomfeed.version>
+        <motech.atomfeed.version>0.9-SNAPSHOT</motech.atomfeed.version>
     </properties>
 
     <repositories>
