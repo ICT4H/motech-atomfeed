@@ -5,30 +5,15 @@
 
     <groupId>org.ict4h</groupId>
     <artifactId>motech-openmrs-integration</artifactId>
-    <version>0.9-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <artifactId>motech-atomfeed</artifactId>
         <groupId>org.ict4h</groupId>
-        <version>0.9-SNAPSHOT</version>
+        <version>0.1.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <properties>
-        <motech.version>0.19-SNAPSHOT</motech.version>
-    </properties>
-
-    <repositories>
-        <repository>
-            <id>motech-repo</id>
-            <name>MOTECH Maven Repository</name>
-            <url>http://nexus.motechproject.org/content/repositories/public</url>
-        </repository>
-        <repository>
-            <id>codehaus</id>
-            <url>http://repository.codehaus.org/org/codehaus</url>
-        </repository>
-    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.motechproject</groupId>
