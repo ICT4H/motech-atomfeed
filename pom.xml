@@ -49,9 +49,9 @@
             <url>http://nexus.motechproject.org/content/repositories/public</url>
         </repository>
         <repository>
-            <id>sonatype-staging</id>
-            <name>Sonatype OSS Nexus</name>
-            <url>https://oss.sonatype.org/content/groups/public/</url>
+            <id>ict4h-sonatype</id>
+            <name>Sonatype OSS Nexus for ICTH4H</name>
+            <url>https://oss.sonatype.org/content/repositories/orgict4h-320/</url>
         </repository>
     </repositories>
 
