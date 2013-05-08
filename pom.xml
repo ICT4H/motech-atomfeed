@@ -18,7 +18,7 @@
 
     <properties>
         <atomfeed.version>0.9.0</atomfeed.version>
-        <motech.version>0.19-SNAPSHOT</motech.version>
+        <motech.version>0.19</motech.version>
     </properties>
 
     <modules>
